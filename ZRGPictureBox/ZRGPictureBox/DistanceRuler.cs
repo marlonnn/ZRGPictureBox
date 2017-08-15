@@ -197,8 +197,8 @@ namespace ZRGPictureBox
                 {
                     using (StringFormat sf = new StringFormat())
                     {
-                        string ls = "";
-                        string.Format("{0}({1})", LineLength(_origin, _last, Scale) / ScaleFactor, strCutDecimals(CurrentAngle, 1));
+                        string lineLength = (LineLength(_origin, _last, Scale) / ScaleFactor).ToString("F2");
+                        string ls = string.Format("{0} ({1}°)", lineLength, strCutDecimals(CurrentAngle, 1));
                         //ls = string.Format(LineLength(_origin, _last, Scale) / ScaleFactor, "#.00") + "  (" + strCutDecimals(CurrentAngle, 1) + "�)";
                         SizeF l = GR.MeasureString(ls, myPictureBoxControl.Font, myPictureBoxControl.ClientSize, sf);
                         sf.LineAlignment = StringAlignment.Center;

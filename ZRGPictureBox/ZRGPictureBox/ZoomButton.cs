@@ -138,7 +138,7 @@ namespace ZRGPictureBox
             {
                 string strFilter = "";
                 System.Windows.Forms.OpenFileDialog OpenImageDialog = new System.Windows.Forms.OpenFileDialog();
-                OpenImageDialog.Filter = "JPEG File Interchange Format (*.jpg;*.jpeg)|*.jpg;*.jpeg|Portable Network Graphics (*.png)|*.png|Tiff Format(*.tiff)|*.tiff|Graphics Interchange Format (*.gif)|*.gif";
+                OpenImageDialog.Filter = "All file (*.*)|*.*|JPEG File Interchange Format (*.jpg;*.jpeg)|*.jpg;*.jpeg|Portable Network Graphics (*.png)|*.png|Tiff Format(*.tiff)|*.tiff|Graphics Interchange Format (*.gif)|*.gif";
                 OpenImageDialog.ShowDialog();
                 if (OpenImageDialog.FileName.Length > 0)
                 {
