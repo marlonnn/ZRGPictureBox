@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -127,6 +128,8 @@ namespace ZRGPictureBox
             }
             catch (Exception e)
             {
+                LogHelper.GetLogger<SelectionBoxElement>().Error(e.Message);
+                LogHelper.GetLogger<SelectionBoxElement>().Error(e.StackTrace);
                 //Interaction.MsgBox(e.Message);
                 return new RECT();
             }

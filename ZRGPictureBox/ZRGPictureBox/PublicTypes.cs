@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -44,6 +45,26 @@ namespace ZRGPictureBox
         public int bottom;
 
         #region "Operators"
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (GetType() != obj.GetType())
+                return false;
+            RECT r = (RECT)obj;
+            if (this.GetHashCode() == r.GetHashCode())
+                return true;
+            else
+                return false;
+        }
+
         public static bool operator ==(RECT R1, RECT R2)
         {
             return R1.top == R2.top && R1.left == R2.left && R1.right == R2.right && R1.bottom == R2.bottom;
@@ -85,6 +106,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<RECT>().Error(ex.Message);
+                LogHelper.GetLogger<RECT>().Error(ex.StackTrace);
                 right = InRect.X + 1000;
                 bottom = InRect.Y + 1000;
             }
@@ -148,7 +171,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
-
+                LogHelper.GetLogger<RECT>().Error(ex.Message);
+                LogHelper.GetLogger<RECT>().Error(ex.StackTrace);
             }
         }
         public RECT(int left, int top, int right, int bottom)
@@ -387,6 +411,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<RECT>().Error(ex.Message);
+                LogHelper.GetLogger<RECT>().Error(ex.StackTrace);
                 return false;
             }
         }
@@ -412,6 +438,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<RECT>().Error(ex.Message);
+                LogHelper.GetLogger<RECT>().Error(ex.StackTrace);
                 return false;
             }
         }
@@ -428,6 +456,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<RECT>().Error(ex.Message);
+                LogHelper.GetLogger<RECT>().Error(ex.StackTrace);
                 return false;
             }
         }
@@ -541,6 +571,8 @@ namespace ZRGPictureBox
                 }
                 catch (Exception ex)
                 {
+                    LogHelper.GetLogger<RECT>().Error(ex.Message);
+                    LogHelper.GetLogger<RECT>().Error(ex.StackTrace);
                 }
             }
             return retVal;
@@ -590,6 +622,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
             }
         }
         public SEGMENT(int X0, int Y0, int X1, int Y1)
@@ -604,6 +638,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
             }
         }
         public SEGMENT(Point P0, Point P1)
@@ -618,6 +654,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
             }
         }
         #endregion
@@ -651,6 +689,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
                 return Point.Empty;
             }
         }
@@ -662,6 +702,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
                 return 0;
             }
         }
@@ -673,6 +715,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
                 return 0;
             }
         }
@@ -770,12 +814,34 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
                 return 0;
             }
         }
         #endregion
 
         #region "Operators"
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (GetType() != obj.GetType())
+                return false;
+            SEGMENT g = (SEGMENT)obj;
+            if (this.GetHashCode() == g.GetHashCode())
+                return true;
+            else
+                return false;
+        }
+
         public static bool operator ==(SEGMENT S1, SEGMENT S2)
         {
             if ((S1.X0 == S2.X0) && (S1.X1 == S2.X1) && (S1.Y0 == S2.Y0) && (S1.Y1 == S2.Y1))

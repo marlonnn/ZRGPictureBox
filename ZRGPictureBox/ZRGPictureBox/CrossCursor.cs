@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -253,6 +254,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<CrossCursor>().Error(ex.Message);
+                LogHelper.GetLogger<CrossCursor>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
                 //MsgBox(ex.Message)
             }

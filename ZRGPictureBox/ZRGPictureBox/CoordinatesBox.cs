@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Summer.System.Log;
 
 namespace ZRGPictureBox
 {
@@ -133,6 +134,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<CoordinatesBox>().Error(ex.Message);
+                LogHelper.GetLogger<CoordinatesBox>().Error(ex.StackTrace);
             }
         }
     }

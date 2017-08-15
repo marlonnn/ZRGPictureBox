@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -43,14 +44,15 @@ namespace ZRGPictureBox
                 }
                 else
                 {
-                    return (int)(PhysicalWidth / ScaleFactor);
+                    return (int)((float)PhysicalWidth / ScaleFactor);
                 }
             }
             set
             {
                 if (value != 0)
                 {
-                    ScaleFactor = PhysicalWidth / value;
+                    float v = (float)PhysicalWidth / value;
+                    ScaleFactor = (float)PhysicalWidth / value;
                 }
             }
         }
@@ -66,14 +68,14 @@ namespace ZRGPictureBox
                 }
                 else
                 {
-                   return (int)(PhysicalHeight / ScaleFactor);
+                   return (int)((float)PhysicalHeight / ScaleFactor);
                 }
             }
             set
             {
                 if (value != 0)
                 {
-                    ScaleFactor = PhysicalHeight / value;
+                    ScaleFactor = (float)PhysicalHeight / value;
                 }
             }
         }
@@ -108,9 +110,37 @@ namespace ZRGPictureBox
             }
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (GetType() != obj.GetType())
+                return false;
+            ConversionInfo c = (ConversionInfo)obj;
+            if (this.GetHashCode() == c.GetHashCode())
+                return true;
+            else
+                return false;
+        }
+
         public static bool operator ==(ConversionInfo C1, ConversionInfo C2)
         {
-            return (C1.PhysicalWidth == C2.PhysicalWidth) && (C1.PhysicalHeight == C2.PhysicalHeight) && (C1.ScaleFactor == C2.ScaleFactor) && (C1.LogicalOrigin == C2.LogicalOrigin);
+            try
+            {
+                return (C1.PhysicalWidth == C2.PhysicalWidth) && (C1.PhysicalHeight == C2.PhysicalHeight) && (C1.ScaleFactor == C2.ScaleFactor) && (C1.LogicalOrigin == C2.LogicalOrigin);
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
         }
         public static bool operator !=(ConversionInfo C1, ConversionInfo C2)
         {
@@ -128,6 +158,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return float.NaN;
             }
         }
@@ -143,6 +175,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return float.NaN;
             }
         }
@@ -160,6 +194,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return float.NaN;
             }
         }
@@ -175,6 +211,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return Point.Empty;
             }
         }
@@ -191,6 +229,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return Point.Empty;
             }
         }
@@ -206,6 +246,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return float.NaN;
             }
         }
@@ -221,6 +263,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return float.NaN;
             }
         }
@@ -238,6 +282,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return float.NaN;
             }
         }
@@ -253,6 +299,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return Point.Empty;
             }
         }
@@ -266,6 +314,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return new RECT();
             }
         }
@@ -277,6 +327,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.Message);
+                LogHelper.GetLogger<ConversionInfo>().Error(ex.StackTrace);
                 return -1f;
             }
         }

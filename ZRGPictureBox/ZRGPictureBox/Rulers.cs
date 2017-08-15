@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using Summer.System.Log;
 
 namespace ZRGPictureBox
 {
@@ -280,6 +281,8 @@ namespace ZRGPictureBox
                 }
                 catch (Exception ex)
                 {
+                    LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                    LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
                     //Interaction.MsgBox(ex.Message + Constants.vbCr + ex.StackTrace);
                 }
             }
@@ -308,8 +311,6 @@ namespace ZRGPictureBox
                 //       dopo la virgola, ma la quarta cifra non e' molto precisa, quindi non la stampo
                 return aValue.ToString("0.###");
             }
-
-            private double aValue;
 
             List<System.Drawing.Point> static_DrawScaledNumber_pixelList;
             List<Point> static_DrawScaledNumber_logicCoordList;
@@ -353,6 +354,8 @@ namespace ZRGPictureBox
                 }
                 catch (Exception ex)
                 {
+                    LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                    LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
                     //Interaction.MsgBox(ex.Message + Constants.vbCr + ex.StackTrace);
                 }
             }
@@ -651,6 +654,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
                 return null;
             }
         }
@@ -814,6 +819,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
                 return null;
             }
@@ -899,6 +906,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
                 return null;
             }
@@ -1048,6 +1057,11 @@ namespace ZRGPictureBox
 
                     GR.DrawImage(myOriginBmp, 0, 0, myOriginBmp.Width, myOriginBmp.Height);
                 }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                    LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
+                }
                 finally
                 {
                     // Ripristino lo stato precedente
@@ -1056,6 +1070,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
             }
         }
 
@@ -1071,6 +1087,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
             }
         }
 
@@ -1086,6 +1104,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<Rulers>().Error(ex.Message);
+                LogHelper.GetLogger<Rulers>().Error(ex.StackTrace);
             }
         }
 

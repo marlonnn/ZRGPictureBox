@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using Summer.System.Log;
 
 namespace ZRGPictureBox
 {
@@ -46,19 +47,19 @@ namespace ZRGPictureBox
         public const MeasureSystem.enUniMis DefaultUnitOfMeasure = MeasureSystem.enUniMis.mm;
 
         #region "Eventi"
-        public event MouseClickEventHandler MouseClick;
+        public new event MouseClickEventHandler MouseClick;
         public delegate void MouseClickEventHandler(ZRGPictureBoxControl sender, System.Windows.Forms.MouseEventArgs e, Point LogicalCoord, enClickAction CurrentClickAction);
-        public event MouseMoveEventHandler MouseMove;
+        public new event MouseMoveEventHandler MouseMove;
         public delegate void MouseMoveEventHandler(ZRGPictureBoxControl sender, System.Windows.Forms.MouseEventArgs e, Point LogicalCoord, enClickAction CurrentClickAction);
-        public event MouseDownEventHandler MouseDown;
+        public new event MouseDownEventHandler MouseDown;
         public delegate void MouseDownEventHandler(ZRGPictureBoxControl sender, System.Windows.Forms.MouseEventArgs e, Point LogicalCoord, enClickAction CurrentClickAction);
-        public event MouseUpEventHandler MouseUp;
+        public new event MouseUpEventHandler MouseUp;
         public delegate void MouseUpEventHandler(ZRGPictureBoxControl sender, System.Windows.Forms.MouseEventArgs e, Point LogicalCoord, enClickAction CurrentClickAction);
-        public event MouseEnterEventHandler MouseEnter;
+        public new event MouseEnterEventHandler MouseEnter;
         public delegate void MouseEnterEventHandler(ZRGPictureBoxControl sender, System.EventArgs e);
-        public event MouseLeaveEventHandler MouseLeave;
+        public new event MouseLeaveEventHandler MouseLeave;
         public delegate void MouseLeaveEventHandler(ZRGPictureBoxControl sender, System.EventArgs e);
-        public event PaintEventHandler Paint;
+        public new event PaintEventHandler Paint;
         public delegate void PaintEventHandler(ZRGPictureBoxControl sender, System.Windows.Forms.PaintEventArgs e);
 
         public event OnMeasureCompletedEventHandler OnMeasureCompleted;
@@ -437,6 +438,8 @@ namespace ZRGPictureBox
                 catch (Exception ex)
                 {
                     //Interaction.MsgBox(ex.Message);
+                    LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                    LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 }
             }
         }
@@ -800,6 +803,10 @@ namespace ZRGPictureBox
 
         public ZRGPictureBoxControl(bool visible) : base()
         {
+            myCoordinatesBox = new CoordinatesBox(this);
+            myRulers = new Rulers(this);
+            withEventsField_myDistanceRuler = new DistanceRuler(this);
+            mySelectionBox = new SelectionBoxElement(this);
             Load += PictureBoxEx_Load;
             GiveFeedback += ListDragSource_GiveFeedback;
             //This call is required by the Windows Form Designer.
@@ -814,17 +821,13 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
 
         public ZRGPictureBoxControl() : this(true)
         {
-            InitializeComponent();
-
-            myCoordinatesBox = new CoordinatesBox(this);
-            myRulers = new Rulers(this);
-            withEventsField_myDistanceRuler = new DistanceRuler(this);
-            mySelectionBox = new SelectionBoxElement(this);
         }
 
         #region "Funzioni di supporto per gli eventi"
@@ -998,6 +1001,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
         protected override void OnMouseClick(System.Windows.Forms.MouseEventArgs e)
@@ -1021,6 +1026,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
 
@@ -1087,6 +1094,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
             finally
             {
@@ -1149,6 +1158,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
             finally
             {
@@ -1165,6 +1176,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
         private void PictureBoxEx_Load(object sender, System.EventArgs e)
@@ -1402,6 +1415,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
             finally
             {
@@ -1425,6 +1440,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 return null;
             }
         }
@@ -1444,6 +1461,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 return false;
             }
         }
@@ -1471,6 +1490,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
 
@@ -1567,6 +1588,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.ToString());
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
 
@@ -1589,6 +1612,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.ToString());
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
         #endregion
@@ -1599,7 +1624,7 @@ namespace ZRGPictureBox
         /// Copia myBackbufferBitmap sulla image della PictureBox (non tiene conto di cambiamenti di scala)
         /// Fa anche l'aggiornamento della posizione delle maniglie della finestra di selezione
         /// </summary>
-        public new void Refresh(bool _Invalidate = true)
+        public void Refresh(bool _Invalidate = true)
         {
             Graphics GR = null;
             try
@@ -1649,6 +1674,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //MsgBox(ex.Message)
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
             finally
             {
@@ -1840,6 +1867,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
         }
 
@@ -1943,6 +1972,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
             finally
             {
@@ -1978,6 +2009,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2029,6 +2062,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2165,6 +2200,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2245,6 +2282,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2306,6 +2345,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2326,6 +2367,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2389,6 +2432,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2586,6 +2631,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
                 return false;
             }
@@ -2629,6 +2676,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2826,6 +2875,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
                 return new System.Drawing.PointF(1.0f, 1.0f);
             }
@@ -2853,6 +2904,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -2943,6 +2996,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 return null;
             }
         }
@@ -2975,6 +3030,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
+                LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
                 return null;
             }
         }

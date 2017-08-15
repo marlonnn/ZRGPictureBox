@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Summer.System.Log;
 
 namespace ZRGPictureBox
 {
@@ -73,8 +74,10 @@ namespace ZRGPictureBox
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(e.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(e.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -90,6 +93,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -105,6 +110,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -120,6 +127,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -139,6 +148,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -175,6 +186,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -221,6 +234,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -239,6 +254,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -257,13 +274,10 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<ZoomButton>().Error(ex.Message);
+                LogHelper.GetLogger<ZoomButton>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
-        }
-
-        private void btUmMicron_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -150,6 +151,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<DistanceRuler>().Error(ex.Message);
+                LogHelper.GetLogger<DistanceRuler>().Error(ex.StackTrace);
                 functionReturnValue = Value;
             }
             return functionReturnValue;
@@ -299,6 +302,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<DistanceRuler>().Error(ex.Message);
+                LogHelper.GetLogger<DistanceRuler>().Error(ex.StackTrace);
             }
         }
     }

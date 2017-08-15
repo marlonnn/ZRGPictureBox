@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -41,6 +42,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<cCommonCursors>().Error(ex.Message);
+                LogHelper.GetLogger<cCommonCursors>().Error(ex.StackTrace);
                 //Interaction.MsgBox(ex.Message);
             }
         }
@@ -67,6 +70,8 @@ namespace ZRGPictureBox
             catch (Exception ex)
             {
                 //Interaction.MsgBox(ex.Message);
+                LogHelper.GetLogger<cCommonCursors>().Error(ex.Message);
+                LogHelper.GetLogger<cCommonCursors>().Error(ex.StackTrace);
                 return null;
             }
         }
@@ -90,6 +95,8 @@ namespace ZRGPictureBox
                 catch (Exception ex)
                 {
                     //Interaction.MsgBox(ex.Message);
+                    LogHelper.GetLogger<cCommonCursors>().Error(ex.Message);
+                    LogHelper.GetLogger<cCommonCursors>().Error(ex.StackTrace);
                     return Cursors.No;
                 }
             }
@@ -110,6 +117,8 @@ namespace ZRGPictureBox
                 catch (Exception ex)
                 {
                     //Interaction.MsgBox(ex.Message);
+                    LogHelper.GetLogger<cCommonCursors>().Error(ex.Message);
+                    LogHelper.GetLogger<cCommonCursors>().Error(ex.StackTrace);
                     return Cursors.No;
                 }
             }

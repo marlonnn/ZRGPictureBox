@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Summer.System.Log;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.Message);
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.StackTrace);
             }
         }
 
@@ -104,6 +107,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.Message);
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.StackTrace);
                 return 0;
             }
         }
@@ -146,6 +151,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.Message);
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.StackTrace);
                 return 0;
             }
         }
@@ -173,6 +180,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.Message);
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.StackTrace);
             }
         }
         public static string UniMisDescription(enUniMis UNIT)
@@ -197,6 +206,8 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.Message);
+                LogHelper.GetLogger<MeasureSystem>().Error(ex.StackTrace);
                 return "";
             }
         }
