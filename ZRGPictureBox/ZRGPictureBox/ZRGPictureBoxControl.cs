@@ -175,7 +175,7 @@ namespace ZRGPictureBox
                 }
             }
         }
-        public new System.Drawing.Image Image
+        public Image Image
         {
             get { return myPictureBoxImage; }
             set
@@ -286,50 +286,11 @@ namespace ZRGPictureBox
             private set { myGraphicInfo = value; }
         }
 
-        #region "Funzioni che impediscono la serializzazione di queste proprieta'"
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeScaleFactor()
-        {
-            return false;
-        }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeLogicalOrigin()
-        {
-            return false;
-        }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeLogicalWidth()
-        {
-            return false;
-        }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeLogicalHeight()
-        {
-            return false;
-        }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeLogicalArea()
-        {
-            return false;
-        }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeMinLogicalWindowSize()
-        {
-            return MinLogicalWindowSize != DefaultMinLogicalWindowSize;
-        }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeMaxLogicalWindowSize()
-        {
-            return MaxLogicalWindowSize != DefaultMaxLogicalWindowSize;
-        }
-
-        #endregion
-
-        #region "Flag per la visualizzazione"
+        #region "flag for display"
         /// <summary>
-        /// Visualizza l'immagine di sfondo della picturebox
+        /// displays the background image of the picturebox.
         /// </summary>
-        [Description("Visualizza l'immagine di sfondo della picturebox."), Category("Opzioni di visualizzazione"), DefaultValue(true)]
+        [Description("displays the background image of the picturebox."), Category("display options"), DefaultValue(true)]
         public bool ShowPictureBoxBackgroundImage
         {
             get { return myShowPictureBoxImage; }
@@ -345,25 +306,25 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Permette di visualizzare le coordinate a cui si trova il mouse
+        /// allows to display the coordinates where the mouse is
         /// </summary>
-        [Description("Permette di visualizzare le coordinate a cui si trova il mouse"), DefaultValue(true)]
+        [Description("allows to display the coordinates where the mouse is"), DefaultValue(true)]
         public bool ShowMouseCoordinates
         {
             get { return myShowMouseCoordinates; }
             set { myShowMouseCoordinates = value; }
         }
 
-        [Description("Imposta se visualizzare la griglia"), Category("Opzioni di visualizzazione"), DefaultValue(true)]
+        [Description("allows to display the grid"), Category("display options"), DefaultValue(true)]
         public bool ShowGrid
         {
             get { return myShowGrid; }
             set { myShowGrid = value; }
         }
         /// <summary>
-        /// Permette di visualizzare i righelli
+        /// allows to display the rulers
         /// </summary>
-        [Description("Permette di visualizzare i righelli"), Category("Opzioni di visualizzazione"), DefaultValue(true)]
+        [Description("allows to display the rulers"), Category("display options"), DefaultValue(true)]
         public bool ShowRulers
         {
             get { return myShowRulers; }
@@ -374,7 +335,7 @@ namespace ZRGPictureBox
         #region "Gestione del double buffering video"
 
         ///' <summary>
-        ///' Bitmap che costituisce il buffer video di primo livello (persistente fino al Refresh())
+        ///' bitmap which is the first level buffer level (persistent until the refresh ())
         ///' </summary>
         protected Bitmap RefreshBackBuffer
         {
@@ -382,7 +343,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Bitmap che costituisce il buffer video di secondo livello (persistente fino al Redraw())
+        /// bitmap which is the second level buffer level (persistent until redraw ())
         /// </summary>
         protected Bitmap RedrawBackBuffer
         {
@@ -391,7 +352,7 @@ namespace ZRGPictureBox
 
         #endregion
 
-        #region "Elementi della PictureBox"
+        #region "elements of the picturebox"
         public static Color AxesColor
         {
             get { return Color.Navy; }
@@ -406,9 +367,9 @@ namespace ZRGPictureBox
             set { myDefaultBackgroundColor = value; }
         }
         /// <summary>
-        /// Colore del cursore a croce
+        /// sets the color of the box of zoom / selection
         /// </summary>
-        [Description("Imposta il colore del cursore a croce"), Category("Colors"), DefaultValue(typeof(Color), "Black")]
+        [Description("sets the color of the box of zoom / selection"), Category("Colors"), DefaultValue(typeof(Color), "Black")]
         public Color CrossCursorColor
         {
             get { return FullCrossCursor.Color; }
@@ -423,9 +384,9 @@ namespace ZRGPictureBox
             get { return Color.Gray; }
         }
         /// <summary>
-        /// Colore del box di zoom/selezione
+        /// sets the color of the box of zoom / selection
         /// </summary>
-        [Description("Imposta il colore del box di zoom/selezione"), Category("Colors"), DefaultValue(typeof(Color), "Black")]
+        [Description("sets the color of the box of zoom / selection"), Category("Colors"), DefaultValue(typeof(Color), "Black")]
         public Color ZoomSelectionBoxColor
         {
             get { return myZoomSelectionBoxColor; }
@@ -445,17 +406,17 @@ namespace ZRGPictureBox
         }
         #endregion
 
-        #region "Griglia e Snap"
-        [Description("Imposta la modalit� di visualizzazione delle griglie"), DefaultValue(typeof(GridKind), "Crosses")]
+        #region "grid and snap"
+        [Description("set the kind of display grids"), DefaultValue(typeof(GridKind), "Crosses")]
         public GridKind GridView
         {
             get { return myGridView; }
             set { myGridView = value; }
         }
         /// <summary>
-        /// Imposta il passo della griglia
+        /// set the step of the grid
         /// </summary>
-        [Description("Imposta il passo della griglia"), DefaultValue(10000)]
+        [Description("set the step of the grid"), DefaultValue(10000)]
         public int GridStep
         {
             get { return myGridStep; }
@@ -471,7 +432,7 @@ namespace ZRGPictureBox
         #region "Tasti premuti"
 
         /// <summary>
-        /// Ritorna true se e' premuto il tasto SHIFT
+        /// returns true if the shift key is pressed
         /// </summary>
         public static bool IsShiftKeyPressed
         {
@@ -497,7 +458,7 @@ namespace ZRGPictureBox
         }
         #endregion
 
-        #region "Menu di contesto"
+        #region "context menu"
         public event ShowContextMenuRequiredEventHandler ShowContextMenuRequired;
         public delegate void ShowContextMenuRequiredEventHandler(ZRGPictureBoxControl sender, float X, float Y);
         public void RaiseContextMenuRequest(ZRGPictureBoxControl sender, float X, float Y)
@@ -560,10 +521,6 @@ namespace ZRGPictureBox
 
         #region "Scrollbar"
 
-        /// <summary>
-        /// Ottiene o imposta un valore che indica se il contenitore consentir� all'utente di scorrere i controlli posizionati all'esterno dei limiti visibili.
-        /// NOTA: E' stata ridichiarata per impedire la modifica da parte di applicativi esterni
-        /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool AutoScroll
@@ -572,10 +529,6 @@ namespace ZRGPictureBox
             set { base.AutoScroll = value; }
         }
 
-        /// <summary>
-        /// Ottiene o imposta la dimensione minima dello scorrimento automatico.
-        /// NOTA: E' stata ridichiarata per impedire la modifica da parte di applicativi esterni
-        /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public new System.Drawing.Size AutoScrollMinSize
@@ -584,10 +537,6 @@ namespace ZRGPictureBox
             private set { base.AutoScrollMinSize = value; }
         }
 
-        /// <summary>
-        /// Ottiene o imposta la dimensione del margine di scorrimento automatico.
-        /// NOTA: E' stata ridichiarata per impedire la modifica da parte di applicativi esterni
-        /// </summary>
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public new System.Drawing.Size AutoScrollMargin
@@ -597,25 +546,25 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Permette di visualizzare le scrollbar
+        /// allows you to display the scrollbar
         /// </summary>
-        [Description("Permette di visualizzare le scrollbar"), DefaultValue(false)]
+        [Description("allows you to display the scrollbar"), DefaultValue(false)]
         public bool ShowScrollbars
         {
             get { return AutoScroll; }
             set
             {
-                // Check se il valore e' gia' quello desiderato
+
                 if (AutoScroll == value)
                 {
                     return;
                 }
-                // Aggiorno i dati delle scrollbar, lo faccio prima di visualizzarle, cosi' mi evito un ridisegno con le scrollbar sbagliate
+
                 if (value)
                 {
                     UpdateScrollbars();
                 }
-                // NOTA: Devo impostare il flag che mi fara' saltare l'evento Resize() che si genera quando si cambia il valore di Autoscroll
+
                 myIsChangingAutoScroll = true;
                 AutoScroll = value;
                 myIsChangingAutoScroll = false;
@@ -626,9 +575,9 @@ namespace ZRGPictureBox
 
         #region "Stato attuale"
         /// <summary>
-        /// Imposta il tipo di azione da eseguire sul click del mouse
+        /// sets the type of action to be carried out on the click of a mouse
         /// </summary>
-        [Description("Imposta il tipo di azione da eseguire sul click del mouse"), DefaultValue(typeof(enClickAction), "SelectObjects")]
+        [Description("sets the type of action to be carried out on the click of a mouse"), DefaultValue(typeof(enClickAction), "SelectObjects")]
         public enClickAction ClickAction
         {
             get { return myClickAction; }
@@ -681,7 +630,7 @@ namespace ZRGPictureBox
 
         #endregion
 
-        #region "Variabili per il Resize()"
+        #region "variables for the Resize()"
         [DefaultValue(typeof(ResizeMode), "Stretch")]
         public ResizeMode ResizeMode
         {
@@ -693,8 +642,6 @@ namespace ZRGPictureBox
         [Browsable(false)]
         public bool IsLayoutSuspended
         {
-            // Evito le Redraw() a DesignTime
-            //OrElse Me.DesignMode
             get { return myIsLayoutSuspended; }
         }
 
@@ -711,8 +658,8 @@ namespace ZRGPictureBox
 
         public bool ContainsMousePosition
         {
-            //' NOTA: Non posso usare il ClientRectangle percvhe' se le scrollbar sono attive,
-            //'       l'area occupata dalle scrollbar viene esclusa dall'area client 
+            //note: can not use the clientrectangle percvhe if the scrollbar are active.
+            //the area occupied by the scrollbar is excluded from the area client
             //Dim p As Point = PointToClient(MousePosition)
             //If (p.X < 0) OrElse (p.X > Me.Size.Width) Then Return False
             //If (p.Y < 0) OrElse (p.Y > Me.Size.Height) Then Return False
@@ -735,20 +682,11 @@ namespace ZRGPictureBox
         {
             get { return myClickAction == enClickAction.MeasureDistance; }
         }
-        /// <summary>
-        /// Imposta il bordo della PictureBox
-        /// </summary>
-        [Description("Imposta il bordo della PictureBox"), DefaultValue(typeof(BorderStyle), "FixedSingle")]
-        public BorderStyle BorderStyle
-        {
-            get { return myBorderStyle; }
-            set { myBorderStyle = value; }
-        }
 
         /// <summary>
-        /// Unit� di misura del sistema di coordinate logico della PictureBox
+        /// Unit di misura del sistema di coordinate logico della PictureBox
         /// </summary>
-        [Description("Imposta l'unit� di misura del sistema di coordinate logico della PictureBox"), DefaultValue(typeof(MeasureSystem.enUniMis), "Millimeter")]
+        [Description("Imposta l'unit di misura del sistema di coordinate logico della PictureBox"), DefaultValue(typeof(MeasureSystem.enUniMis), "Millimeter")]
         public MeasureSystem.enUniMis UnitOfMeasure
         {
             get { return myUnitOfMeasure; }
@@ -772,34 +710,14 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Ritorna l'area correntemente visualizzata dalla PictureBox [coordinate logiche]
-        /// NOTA BENE: L'area varia al variare dello zoom
+        /// returns the currently displayed by the picturebox coordinates area [logical]
+        /// note: the area varies in the range of the zoom lens
         /// </summary>
         [Browsable(false)]
         public RECT VisibleRect
         {
             get { return new RECT(LogicalOrigin.X, LogicalOrigin.Y, LogicalOrigin.X + LogicalWidth, LogicalOrigin.Y + LogicalHeight); }
         }
-
-        #region "Funzioni che impediscono la serializzazione di queste proprieta'"
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeAutoScroll()
-        {
-            return false;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeAutoScrollMargin()
-        {
-            return false;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private bool ShouldSerializeAutoScrollMinSize()
-        {
-            return false;
-        }
-        #endregion
 
         public ZRGPictureBoxControl(bool visible) : base()
         {
@@ -831,15 +749,6 @@ namespace ZRGPictureBox
         }
 
         #region "Funzioni di supporto per gli eventi"
-        /// <summary>
-        /// Funzione chiamata durante la MouseMove(), permette di personalizzare il cursore nelle classi derivate.
-        /// Viene passata la posizione attuale del cursore in coordinate logiche.
-        /// Deve ritornare true se il cursore e' stato personalizzato, false altrimenti.
-        /// </summary>
-        protected virtual bool OnCustomCursorRequest(Point logicalCoord)
-        {
-            return false;
-        }
 
         /// <summary>
         /// Cancella gli eventuali dati temporanei usati tra un MouseDown e un MouseUp
@@ -867,34 +776,6 @@ namespace ZRGPictureBox
                 int distanceY = physicalMousePos.Y - myLastMouseDownPoint.Y;
                 myIsDragging = (Math.Abs(distanceX) >= 3 || Math.Abs(distanceY) >= 3);
             }
-        }
-
-        /// <summary>
-        /// Aggiorna l'area selezionata con il box di selezione.
-        /// Genera l'evento "Richiesta una selezione di oggetti"
-        /// Utilizzata nella gestione dell'evento MouseUp
-        /// </summary>
-        private void UpdateSelectionBox()
-        {
-            // Se il primo punto dell'area e' non valido, ignoro il click
-            // Puo' succedere se ho premuto il bottone del mouse fuori dal mio applicativo, poi ho trascinato il mouse
-            // sopra la PictureBox e poi ho rilasciato il bottone, oppure se ho premuto OK su una dialog che era
-            // sopra la PictureBox e che poi e' scomparsa
-            if (SelectionBox.TopLeftCorner == RECT.InvalidPoint())
-            {
-                return;
-            }
-
-            // Rettangolo corrispondente al box di selezione.
-            // Vale sia nel caso di singolo click che di selezione tramite trascinamento di un'area
-            RECT selectedBox = SelectionBox;
-
-            // Check se il rettangolo di selezione e' valido
-            if (selectedBox.IsZeroSized)
-            {
-                return;
-            }
-
         }
 
         /// <summary>
@@ -1046,14 +927,11 @@ namespace ZRGPictureBox
 
         }
 
-
-        private bool DisableHighlightWhileSelecting = false;
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e)
         {
             bool needsRepaint = false;
             try
             {
-                // Posizione del mouse in vari tipi di coordinate
                 Point physicalMousePos = new Point(e.X, e.Y);
                 Point logicalMousePos = GraphicInfo.ToLogicalPoint(physicalMousePos);
 
@@ -1084,16 +962,11 @@ namespace ZRGPictureBox
                         break;
                 }
 
-                // Genero l'evento 
-                if (MouseMove != null)
-                {
-                    MouseMove(this, e, logicalMousePos, myClickAction);
-                }
+                MouseMove?.Invoke(this, e, logicalMousePos, myClickAction);
                 base.OnMouseMove(e);
             }
             catch (Exception ex)
             {
-                //Interaction.MsgBox(ex.Message);
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
@@ -1157,13 +1030,11 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
-                //Interaction.MsgBox(ex.Message);
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
             finally
             {
-                // Cancello gli eventuali dati temporanei usati tra un MouseDown e un MouseUp
                 ResetTemporaryData();
             }
         }
@@ -1175,7 +1046,6 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
-                //Interaction.MsgBox(ex.Message);
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
@@ -1194,31 +1064,10 @@ namespace ZRGPictureBox
             }
         }
 
-        #region "Eventi della finestra di selezione degli oggetti"
-        /// <summary>
-        /// Ritorna true se l'oggetto passato e' una stringa.
-        /// </summary>
-        private bool IsString(object obj)
-        {
-            //Debug.Assert(obj != null, "Trovato oggetto nullo");
-            if (((obj) is string))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public void Invalidate()
+        public new void Invalidate()
         {
             base.Invalidate();
-            // se la seguente istruzione viene decommentata
-            // il tooltip che evidenzia l'angolo di cui si ruota un blocco funziona
-            // ma il refresh della picturebox si comporta in modo strano su Windows Vista
-            //Update()
         }
-        #endregion
 
         #endregion
 
@@ -1260,10 +1109,6 @@ namespace ZRGPictureBox
 
         protected override void OnScroll(ScrollEventArgs se)
         {
-            //MsgBox(String.Format("Oldvalue: {0}", se.OldValue))
-            //MsgBox(String.Format("Newvalue: {0}", se.NewValue))
-            //MsgBox(String.Format("ScrollValues BEFORE: {0}/{1}  {2}/{3}", Me.HorizontalScroll.Value, MaxLogicalWindowSize.Width, Me.VerticalScroll.Value, MaxLogicalWindowSize.Height))
-
             // In funzione del tipo di scroll, ho uno spostamento diverso 
             if (se.ScrollOrientation == ScrollOrientation.HorizontalScroll)
             {
@@ -1298,7 +1143,6 @@ namespace ZRGPictureBox
             }
             else
             {
-                //MsgBox("OnScroll: Vertical")
                 switch (se.Type)
                 {
                     case ScrollEventType.SmallIncrement:
@@ -1587,7 +1431,6 @@ namespace ZRGPictureBox
             }
             catch (Exception ex)
             {
-                //Interaction.MsgBox(ex.ToString());
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.Message);
                 LogHelper.GetLogger<ZRGPictureBoxControl>().Error(ex.StackTrace);
             }
@@ -2648,12 +2491,12 @@ namespace ZRGPictureBox
         #region "Routine per calcolare/mostrare finestre logiche"
 
         /// <summary>
-        /// Mostra la finestra logica desiderata.
-        /// Se SaveInZoomHistory e' true, salva il nuovo zoom nella history degli zoom.
-        /// Se CenterWindow e' true, la finestra viene centrata nella picturebox, altrimenti viene lasciata allineata a sinistra.
-        /// Se AddEmptyBorder e' true lo zoom diminuisce lievemente, in modo da avere una cornice vuota attorno all'area desiderata.
-        /// Se ExcludeRulersArea e' true (e se i righelli sono visibili) la finestra passata viene mappata nell'area della picturebox.
-        /// non coperta dai righelli
+        /// show the window logic is required.
+        /// if saveinzoomhistory is true, save the new zoom in the history of the zoom lens.
+        /// if centerwindow is true, the window is centered in the picturebox, otherwise it is left aligned to the left.
+        /// if addemptyborder's true zoom decreases slightly, in order to have an empty frame around the area desired.
+        /// if excluderulersarea is true (and if the rulers are visible through the window mappata) is in the area of picturebox.
+        /// not covered by rulers
         /// </summary>
         public void ShowLogicalWindow(RECT LogicalWindow, bool CenterWindow = true, bool AddEmptyBorder = true, bool ExcludeRulersArea = true)
         {
@@ -2915,7 +2758,7 @@ namespace ZRGPictureBox
         /// <summary>
         /// Consente di sospendere temporaneamente la logica di layout per il controllo
         /// </summary>
-        private void SuspendLayout()
+        private new void SuspendLayout()
         {
             base.SuspendLayout();
             this.myIsLayoutSuspended = true;
@@ -2924,7 +2767,7 @@ namespace ZRGPictureBox
         /// <summary>
         /// Consente di riprendere la consueta logica di layout
         /// </summary>
-        private void ResumeLayout()
+        private new void ResumeLayout()
         {
             base.ResumeLayout();
             this.myIsLayoutSuspended = false;
@@ -2935,7 +2778,7 @@ namespace ZRGPictureBox
         /// <summary>
         /// Consente di riprendere la consueta logica di layout, imponendo, eventualmente, l'esecuzione di un layout immediato delle richieste di layout in sospeso.
         /// </summary>
-        private void ResumeLayout(bool performLayout)
+        private new void ResumeLayout(bool performLayout)
         {
             base.ResumeLayout(performLayout);
             this.myIsLayoutSuspended = false;

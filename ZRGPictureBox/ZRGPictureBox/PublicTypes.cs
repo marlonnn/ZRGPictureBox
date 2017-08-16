@@ -41,8 +41,8 @@ namespace ZRGPictureBox
         public int left;
         public int top;
         public int right;
-        #endregion
         public int bottom;
+        #endregion
 
         #region "Operators"
 
@@ -73,14 +73,17 @@ namespace ZRGPictureBox
         {
             return R1.top != R2.top || R1.left != R2.left || R1.right != R2.right || R1.bottom != R2.bottom;
         }
+
         public static implicit operator Rectangle(RECT InRect)
         {
             return new Rectangle(InRect.left, InRect.top, InRect.right - InRect.left, InRect.bottom - InRect.top);
         }
+
         public static implicit operator RectangleF(RECT InRect)
         {
             return new RectangleF(InRect.left, InRect.top, InRect.right - InRect.left, InRect.bottom - InRect.top);
         }
+
         public static implicit operator RECT(RectangleF InRect)
         {
             return new RECT(InRect);

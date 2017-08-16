@@ -148,7 +148,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Trasforma una coordinata X da coordinate fisiche a coordinate logiche
+        /// Transform a coordinata of X from physical to logical coordinate
         /// </summary>
         public float ToLogicalCoordX(float PhysicalCoordX)
         {
@@ -165,7 +165,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Trasforma una coordinata Y da coordinate fisiche a coordinate logiche
+        /// Transform a coordinata of Y from physical to logical coordinate
         /// </summary>
         public float ToLogicalCoordY(float PhysicalCoordY)
         {
@@ -182,6 +182,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
+        /// Transform from physical coordinates to one dimensional logical coordinates
         /// Trasforma una dimensione da coordinate fisiche a coordinate logiche
         /// NOTA: Una dimensione e' intesa come "coordinata1- coordinata2", quindi
         /// e' invariante rispetto alla posizione dell'origine
@@ -201,7 +202,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Trasforma un punto da coordinate fisiche a coordinate logiche
+        /// transforms a point from physical to logical coordinates
         /// </summary>
         public System.Drawing.Point ToLogicalPoint(System.Drawing.Point PhysicalPoint)
         {
@@ -219,7 +220,7 @@ namespace ZRGPictureBox
 
 
         /// <summary>
-        /// Trasforma un punto da coordinate fisiche a coordinate logiche
+        /// transforms a point from physical to logical coordinates
         /// </summary>
         public Point ToLogicalPoint(int X, int Y)
         {
@@ -236,7 +237,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Trasforma una coordinata X da coordinate logiche a coordinate fisiche
+        /// turn an x coordinate from physical coordinates as coordinates
         /// </summary>
         public float ToPhysicalCoordX(float LogicalCoordX)
         {
@@ -253,7 +254,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Trasforma una coordinata Y da coordinate logiche a coordinate fisiche
+        /// turn an Y coordinate from physical coordinates as coordinates
         /// </summary>
         public float ToPhysicalCoordY(float LogicalCoordY)
         {
@@ -270,9 +271,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Trasforma una dimensione da coordinate logiche a coordinate fisiche
-        /// NOTA: Una dimensione e' intesa come "coordinata1- coordinata2", quindi
-        /// e' invariante rispetto alla posizione dell'origine
+        /// transforms a logical to physical coordinates to coordinates dimension
         /// </summary>
         public float ToPhysicalDimension(float dimension)
         {
@@ -289,7 +288,7 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Trasforma un punto da coordinate logiche a coordinate fisiche
+        /// transforms a point from logical to physical coordinates coordinates
         /// </summary>
         public System.Drawing.Point ToPhysicalPoint(System.Drawing.Point LogicalPoint)
         {
