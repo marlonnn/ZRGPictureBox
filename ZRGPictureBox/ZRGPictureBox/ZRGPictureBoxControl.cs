@@ -779,9 +779,9 @@ namespace ZRGPictureBox
         }
 
         /// <summary>
-        /// Aggiorna le dimensioni degli elementi che hanno bisogno di essere ridimensionati
-        /// Crea delle nuove bitmap di primo e secondo livello in funzione delle nuove dimensioni.
-        /// Ritorna true se le bitmap sono state aggiornate, false altrimenti.
+        ///update the size of the elements that they need to be lowered, 
+        ///creates new bitmap of first and second level according to the new size.
+        ///returns true if the bitmap has been updated, and false otherwise.
         /// </summary>
         private bool UpdateDimensions()
         {
@@ -2569,8 +2569,8 @@ namespace ZRGPictureBox
             // Modifico entrambe le coordinate, tanto usero' solo quella che mi serve
             if (AddEmptyBorder)
             {
-                int widthBorder = Convert.ToInt32(visibleArea.Width / 18);
-                int heightBorder = Convert.ToInt32(visibleArea.Height / 18);
+                int widthBorder = Convert.ToInt32(visibleArea.Width / 68);
+                int heightBorder = Convert.ToInt32(visibleArea.Height / 68);
                 visibleArea.top -= heightBorder;
                 visibleArea.bottom += heightBorder;
                 visibleArea.left -= widthBorder;
@@ -2587,22 +2587,21 @@ namespace ZRGPictureBox
             float availableWidth = Math.Max(clientWidth - rulersPhysicalSize, 1);
             float availableHeight = Math.Max(clientHeight - rulersPhysicalSize, 1);
 
-            // Fattori di scala corrispondenti alla piu' piccola e alla piu' grande finestra visualizzabile
+            // factors of scale corresponding to the smallest and the largest window display
             float minScaleFactor = Math.Min(availableWidth / MinLogicalWindowSize.Width, availableHeight / MinLogicalWindowSize.Height);
             float maxScaleFactor = Math.Min(availableWidth / MaxLogicalWindowSize.Width, availableHeight / MaxLogicalWindowSize.Height);
             if (availableWidth == 1)
             {
                 availableWidth = 1;
             }
-            // Trovo i due fattori di scala che mi portano ad avere la finestra desiderata 
-            // a piena dimensione verticale o orizzontale
+            
+            //find the two factors of scale that lead me to have the desired window to full size horizontal or vertical
             float horzScaleFactor = availableWidth / visibleArea.Width;
             float vertScaleFactor = availableHeight / visibleArea.Height;
 
-            // Check se i fattori di scala sono validi
-            // NOTA: Possono diventare nulli quando rimpicciolisco la finestra fino ad arrivare
-            //       ad una dimensione pari o minore di quella dei righelli
-            // TODO: Questo e' solo un workaround, in questo caso la visualizzazione diventa sbagliata
+            // note: may become invalid when shrink the window all the way to
+            // to a size equal to or less than that of the rulers
+            // todo: this is just a workaround in this case, the display is wrong
             if ((horzScaleFactor <= 0))
                 horzScaleFactor = maxScaleFactor;
             if ((vertScaleFactor <= 0))
@@ -2629,7 +2628,7 @@ namespace ZRGPictureBox
             // Dimensione logica che i righelli avrebbero con il nuovo fattore di scala
             int rulersLogicalSize = (int)(rulersPhysicalSize / newScaleFactor);
 
-            // Offset orizzontale e verticale da sommare all'area visibile
+            // horizontal and vertical offset to add to the visible area
             float horizontalOffset = 0;
             float verticalOffset = 0;
 
